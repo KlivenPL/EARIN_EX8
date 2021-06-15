@@ -1,6 +1,5 @@
 import numpy as np
 import random
-from IPython.display import clear_output
 import time
 import gym
 import sys, getopt
@@ -9,10 +8,8 @@ import sys, getopt
 def print_frames(frames):
     for i, frame in enumerate(frames):
         if 'stop' in frame:
-            clear_output(wait=True)
             time.sleep(4)
         else:
-            clear_output(wait=True)
             print(frame['frame'])
             print(f"Episode: {frame['episode']}")
             print(f"Step: {i + 1}")
@@ -60,10 +57,8 @@ def train(learning_rate, epsilon, gamma, iterations):
             state = next_state
             step_count += 1
 
-        if i % 100 == 0:
-            clear_output(wait=True)
-            print(
-                f"Episode: {i}, average reward: {total_reward / step_count}, incorrectMoves: {incorrect_moves}, episode length: {step_count} ")
+        if i % 500 == 0:
+            print(f"Episode: {i}, average reward: {total_reward / step_count}, incorrectMoves: {incorrect_moves}, episode length: {step_count} ")
 
     print("Training finished.\n")
     np.savetxt("q_table.txt", q_table, delimiter=",")
