@@ -110,6 +110,8 @@ def main(argv):
 
     try:
         opts, args = getopt.getopt(argv, "hl:e:g:i:", ["learning_rate=", "epsilon=", "gamma=", "iterations="])
+        if len(opts) != 1 and len(opts) != 4:
+            raise getopt.GetoptError("")
     except getopt.GetoptError:
         print('ex8.py -l <learning_rate> -e <epsilon> -g <gamma> -i <iterations>')
         sys.exit(2)
